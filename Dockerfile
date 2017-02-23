@@ -21,5 +21,5 @@ RUN bash -c "echo 'debug 1' >> /etc/privoxy/config"
 expose 8118
 expose 8080
 
-COPY mastor_blastor.py ./
-CMD python3 /app/blastor/mastor_blastor.py
+COPY master_blastor.py ./
+CMD python3 /app/blastor/master_blastor.py
