@@ -1,9 +1,10 @@
-from aiohttp import web
 import asyncio
 import time
 import subprocess
 import sys
 import os
+
+from aiohttp import web
 
 
 PRIVOXY_LOGFILE = '/var/log/privoxy/logfile'
@@ -27,13 +28,13 @@ async def handle_delete(request):
 async def handle_newnym(request):
     # throw it to the wind.  It'll work!  If it don't, I'll rewrite this
     cmd = """echo -e 'authenticate ""\nsignal newnym\nquit\n' | nc localhost 9051"""
-    subprocess.run(cmd, shell=True)
+    subprocess.Popen(['/bin/bash', '-c', cmd])
     return web.Response(text='OK')
 
 
 def set_deathclock(seconds_from_now):
     global kill_at
-    print("Setting deathclock to {}s".format(seconds_from_now)
+    print("Setting deathclock to {}s".format(seconds_from_now))
     seconds_from_now = float(seconds_from_now)
     kill_at = time.time() + seconds_from_now
 
