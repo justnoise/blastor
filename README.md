@@ -1,2 +1,2 @@
 # BlasTor
-A tor+socket proxy with HTTP controller
+Run Tor+privoxy inside a container with a nice HTTP interface for control.
